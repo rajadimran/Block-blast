@@ -1,0 +1,19 @@
+{
+  "name": "Imran Blast",
+  "short_name": "Imran Blast",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#0f172a",
+  "orientation": "portrait",
+  "description": "Satisfying 8x8 block puzzle Android game with combos, daily quests, lucky wheel, achievements, and skins.",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "puzzle"]
+}

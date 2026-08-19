@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Settings, X, Volume2, Music, Vibrate, Smartphone, Moon, Sun, Trash2, HelpCircle } from 'lucide-react';
+import { Settings, X, Volume2, Music, Vibrate, Smartphone, Moon, Sun, Trash2, HelpCircle, Download } from 'lucide-react';
 import { GameSettings } from '../types';
 import { soundEngine } from '../utils/audio';
 
@@ -8,6 +8,7 @@ interface SettingsModalProps {
   settings: GameSettings;
   onUpdateSettings: (newSettings: Partial<GameSettings>) => void;
   onOpenTutorial: () => void;
+  onOpenInstall?: () => void;
   onResetData: () => void;
   onClose: () => void;
 }
@@ -16,6 +17,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   settings,
   onUpdateSettings,
   onOpenTutorial,
+  onOpenInstall,
   onResetData,
   onClose,
 }) => {
@@ -202,6 +204,28 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               />
             </button>
           </div>
+
+          {/* Install / APK */}
+          {onOpenInstall && (
+            <button
+              onClick={() => {
+                soundEngine.playClick();
+                onOpenInstall();
+              }}
+              className="w-full p-3 rounded-2xl bg-gradient-to-r from-cyan-950/40 to-blue-950/40 hover:from-cyan-900/50 hover:to-blue-900/50 border border-cyan-500/40 flex items-center justify-between text-slate-200 cursor-pointer active:scale-98 transition-all shadow-md"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+                  <Download className="w-4 h-4" />
+                </div>
+                <div className="text-left">
+                  <span className="text-xs font-bold text-white block">Install Game on Android (APK)</span>
+                  <span className="text-[10px] text-cyan-300">1-Tap Web App, APK download & guide</span>
+                </div>
+              </div>
+              <span className="text-xs font-bold text-cyan-400">Install</span>
+            </button>
+          )}
 
           {/* Tutorial Link */}
           <button

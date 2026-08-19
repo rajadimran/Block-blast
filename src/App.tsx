@@ -58,6 +58,7 @@ import { StatisticsModal } from './components/StatisticsModal';
 import { SettingsModal } from './components/SettingsModal';
 import { TutorialModal } from './components/TutorialModal';
 import { SimulatedAdModal } from './components/SimulatedAdModal';
+import { InstallModal } from './components/InstallModal';
 
 export default function App() {
   // Persistence state
@@ -122,6 +123,7 @@ export default function App() {
     | 'stats'
     | 'settings'
     | 'tutorial'
+    | 'install'
     | 'ad_revive'
     | 'ad_coins'
     | null;
@@ -634,6 +636,7 @@ export default function App() {
             onOpenStats={() => setActiveModal('stats')}
             onOpenSettings={() => setActiveModal('settings')}
             onOpenTutorial={() => setActiveModal('tutorial')}
+            onOpenInstall={() => setActiveModal('install')}
             onUpdateProfile={(newName, newAvatar) => {
               setProfile(p => ({ ...p, name: newName, avatar: newAvatar }));
             }}
@@ -950,6 +953,7 @@ export default function App() {
             settings={settings}
             onUpdateSettings={newS => setSettings(s => ({ ...s, ...newS }))}
             onOpenTutorial={() => setActiveModal('tutorial')}
+            onOpenInstall={() => setActiveModal('install')}
             onResetData={() => {
               localStorage.clear();
               window.location.reload();
@@ -960,6 +964,10 @@ export default function App() {
 
         {activeModal === 'tutorial' && (
           <TutorialModal onClose={() => setActiveModal(null)} />
+        )}
+
+        {activeModal === 'install' && (
+          <InstallModal onClose={() => setActiveModal(null)} />
         )}
 
         {/* AdMob Rewarded Video Demo for Reviving */}

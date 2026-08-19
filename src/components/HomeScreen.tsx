@@ -18,6 +18,7 @@ import {
   X,
   Crown,
   Flame,
+  Download,
 } from 'lucide-react';
 import { soundEngine } from '../utils/audio';
 
@@ -43,6 +44,7 @@ interface HomeScreenProps {
   onOpenStats: () => void;
   onOpenSettings: () => void;
   onOpenTutorial: () => void;
+  onOpenInstall?: () => void;
   onUpdateProfile?: (name: string, avatar: string) => void;
 }
 
@@ -66,6 +68,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   onOpenStats,
   onOpenSettings,
   onOpenTutorial,
+  onOpenInstall,
   onUpdateProfile,
 }) => {
   const xpNeeded = level * 500;
@@ -143,8 +146,22 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </div>
         </button>
 
-        {/* Coins & Settings Pill Group */}
-        <div className="flex items-center gap-2">
+        {/* Coins, Install & Settings Pill Group */}
+        <div className="flex items-center gap-1.5">
+          {onOpenInstall && (
+            <button
+              onClick={() => {
+                soundEngine.playClick();
+                onOpenInstall();
+              }}
+              className="flex items-center gap-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/30 hover:to-blue-500/30 border border-cyan-400/40 text-cyan-300 px-2.5 py-1.5 rounded-2xl shadow-md cursor-pointer active:scale-95 transition-all text-xs font-bold"
+              title="Install Android App / APK"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Install</span>
+            </button>
+          )}
+
           <button
             onClick={() => {
               soundEngine.playClick();
