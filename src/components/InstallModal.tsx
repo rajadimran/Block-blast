@@ -200,6 +200,16 @@ export const InstallModal: React.FC<InstallModalProps> = ({ onClose }) => {
                 </button>
               )}
 
+              <a
+                href="/imran-blast-debug.apk"
+                download="imran-blast-debug.apk"
+                onClick={() => soundEngine.playLevelUp()}
+                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-950/40 to-teal-950/40 hover:from-emerald-900/50 hover:to-teal-900/50 border border-emerald-500/40 text-emerald-300 hover:text-emerald-200 font-bold text-xs flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer text-center no-underline"
+              >
+                <Package className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Direct Download APK Package (5.34 MB)</span>
+              </a>
+
               <button
                 onClick={handleCopyLink}
                 className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-white font-bold text-xs flex items-center justify-center gap-2 border border-slate-700 active:scale-95 transition-all cursor-pointer"
@@ -219,16 +229,42 @@ export const InstallModal: React.FC<InstallModalProps> = ({ onClose }) => {
             </div>
           )}
 
-          {/* TAB 2: GitHub Actions Compiled APK */}
+          {/* TAB 2: GitHub Actions Compiled APK & Direct Download */}
           {activeTab === 'apk' && (
             <div className="space-y-3">
+              {/* Direct APK Download Card */}
+              <div className="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-950/40 via-slate-850 to-cyan-950/40 border border-emerald-500/40 flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Package className="w-5 h-5 text-emerald-400" />
+                    <div>
+                      <span className="text-xs font-black text-white block">imran-blast-debug.apk</span>
+                      <span className="text-[10px] text-emerald-300 font-medium">Ready to Download • 5.34 MB</span>
+                    </div>
+                  </div>
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">
+                    &gt; 4 MB APK
+                  </span>
+                </div>
+
+                <a
+                  href="/imran-blast-debug.apk"
+                  download="imran-blast-debug.apk"
+                  onClick={() => soundEngine.playLevelUp()}
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black text-xs font-['Outfit'] tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 active:scale-95 transition-all text-center no-underline"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>DOWNLOAD .APK (5.34 MB)</span>
+                </a>
+              </div>
+
               <div className="p-3 rounded-2xl bg-slate-850 border border-slate-750">
                 <div className="flex items-center gap-2 mb-1.5">
                   <Package className="w-4 h-4 text-amber-400" />
-                  <span className="text-xs font-black text-white">GitHub Actions APK Workflow</span>
+                  <span className="text-xs font-black text-white">GitHub Actions APK Pipeline</span>
                 </div>
                 <p className="text-[11px] text-slate-300 leading-relaxed">
-                  The automated pipeline at <code className="text-cyan-300 text-[10px] bg-slate-950 px-1 py-0.5 rounded">.github/workflows/build-apk.yml</code> builds and publishes your debug APK on every push to <code className="text-cyan-300 text-[10px] bg-slate-950 px-1 py-0.5 rounded">main</code>.
+                  The workflow at <code className="text-cyan-300 text-[10px] bg-slate-950 px-1 py-0.5 rounded">.github/workflows/build-apk.yml</code> builds and publishes your debug APK on every commit to <code className="text-cyan-300 text-[10px] bg-slate-950 px-1 py-0.5 rounded">main</code>.
                 </p>
               </div>
 
