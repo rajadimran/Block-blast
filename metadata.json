@@ -1,0 +1,6 @@
+{
+  "name": "Imran Blast",
+  "description": "A modern, satisfying, and colorful 8x8 block puzzle game with combos, daily rewards, lucky wheel, achievements, shop, and leaderboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
